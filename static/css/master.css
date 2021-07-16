@@ -1,0 +1,164 @@
+:root {
+    font-family: 'Roboto', sans-serif;
+    --primaryBlack: #111;
+    --primaryWhite: #fefefe;
+    --primaryGray: #f0f0f0;
+    --primaryBlue: #1414ce;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+}
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--primaryGray);
+}
+header a {
+    font-size: 1rem;
+    padding: .4em .7em;
+    border-radius: .3em;
+    color: var(--primaryWhite);
+    text-decoration: none;
+}
+
+/* FORM LOGIN */
+#wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem 2rem;
+}
+#form-cnt {
+    position: relative;
+    padding: 2em;
+    border: 1px solid var(--primaryBlack);
+    border-radius: .3em;
+}
+#myform {
+    display: flex;
+    flex-direction: column;
+}
+#myform input {
+    margin: 1em 0 2em;
+    line-height: 1.5em;
+    padding: .2em .3em;
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    border-radius: .3em;
+    border: 1px solid var(--primaryBlack);
+}
+.black-btn {
+    background-color: var(--primaryBlack);
+    border: 2px solid var(--primaryBlack);
+    color: var(--primaryWhite);
+    transition: 
+    background-color .3s linear,
+    color .1s linear;
+}
+.black-btn:hover {
+    cursor: pointer;
+    background-color: var(--primaryWhite);
+    color: var(--primaryBlack);
+}
+
+/* TASK LIST AFTER LOGIN */
+ul.tasks {
+    list-style: none;
+    border: 1px solid black;
+    width: 60%;
+    overflow: hidden;
+    border-radius: .5em;
+}
+.tasks li {
+    display: flex;
+    line-height: 3rem;
+    align-items: center;   
+}
+.tasks li:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+.tasks li:hover:not(:first-child) {
+    cursor: pointer;
+    box-shadow: 0 0 2px var(--primaryBlack) inset;
+    background-color: #f8f8f8;
+}
+.tasks li span {
+    display: block;
+    width: 10%;
+    text-align: center;
+    overflow: hidden;
+}
+.tasks li h3,
+.tasks li h4 {
+    margin-left: 1rem;
+    overflow: hidden;
+}
+
+/* SHOW DETAIL TASK */
+.note-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000050;
+    z-index: 10;
+}
+.single-task-cnt {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primaryWhite);
+    padding: 2em;
+    border-radius: .3em;
+    height: 60vh;
+    width: 50%;
+}
+.single-task-id {
+    height: 20%;
+    padding: 1em 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--primaryGray);
+}
+.single-body {
+    height: 80%;
+    padding: 1em 0;
+    overflow-y: auto;
+}
+.single-body h3 {
+    margin: 0 auto 2rem;
+    text-align: center;
+    max-width: 40ch;
+}
+.single-body p {
+    line-height: 25px;
+}
+#close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: .3em;
+}
+
+
+/* MESSAGES */
+.error-message {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: red;
+}
