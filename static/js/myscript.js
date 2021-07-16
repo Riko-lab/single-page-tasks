@@ -17,13 +17,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-// API PER LOGGARE UN UTENTE
+// API FOR USER LOGIN
 function login(entry) {
     fetch(`${window.origin}/api/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            // "X-CSRFToken": csrf
             },
         body: JSON.stringify(entry)
     })
@@ -31,14 +30,14 @@ function login(entry) {
     .then(response => {
         if (response.hasOwnProperty('template')) {
 
-            // Popola pagina con lista task
+            // Populate task list
             document.getElementById('wrapper').innerHTML = response.template;
 
-            // Aggiunge bottone logout
+            // Add logout button
             const header = document.querySelector('header');
             header.innerHTML = '<a href="/logout" class="black-btn">Log out</a>'
 
-            // Aggiunta onclick agli li
+            // Add onclick event to li
             const tasks = document.getElementsByClassName('task-id');
             let tasksLength = tasks.length;
             for (let i = 0; i < tasksLength; i++) {
@@ -48,6 +47,8 @@ function login(entry) {
             }
         }
         else {
+
+            // Return error message to the user
             const myForm = document.getElementById('form-cnt');
             let cssClass = 'error-message';
             const errorMessage = createMessage(response.message, cssClass)
@@ -57,7 +58,7 @@ function login(entry) {
     .catch(err => console.log(err))
 }
 
-// Show delle note
+// Show single task
 function showTask(entry) {
     fetch(`${window.origin}/api/task`, {
         method: "POST",
